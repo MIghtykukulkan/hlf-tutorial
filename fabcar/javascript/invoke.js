@@ -39,14 +39,62 @@ async function main() {
         // Get the contract from the network.
         const contract = network.getContract('fabcar');
 
+        
+        let key1 = "p1"
+        var patient1 = {
+            "name" : "kumar",
+            "diagnosis" : "cancer",
+            "hospital" : "apollo"
+        }
+        
+        
+  
+        let key2 = "p2"
+        var patient2 = {
+            "name" : "Rajesh",
+            "diagnosis" : "diabetes",
+            "hospital" : "CMS"
+        }
+
+
+        
+        let key3 = "p3"
+        var patient3 = {
+            "name" : "Rahul",
+            "diagnosis" : "diabetes",
+            "hospital" : "CMS"
+        }
+
+         
+        let key4 = "p4"
+        var patient4 = {
+            "name" : "Madhu",
+            "diagnosis" : "dialysis",
+            "hospital" : "CMS"
+        }
+
+         
+        let key5 = "p5"
+        var patient5 = {
+            "name" : "Ravi",
+            "diagnosis" : "angiogram",
+            "hospital" : "CMS"
+        }
+
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
-        await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+        await contract.submitTransaction('writeJsonData', key1, JSON.stringify(patient1));
+        await contract.submitTransaction('writeJsonData', key2, JSON.stringify(patient2));
+        await contract.submitTransaction('writeJsonData', key3, JSON.stringify(patient3));
+        await contract.submitTransaction('writeJsonData', key4, JSON.stringify(patient4));
+        await contract.submitTransaction('writeJsonData', key5, JSON.stringify(patient5));
+      
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
         await gateway.disconnect();
+        return;
 
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);
